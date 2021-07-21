@@ -1,0 +1,5 @@
+pyyaml
+requests
+BeautifulSoup4
+python-dateutil
+python-slugify

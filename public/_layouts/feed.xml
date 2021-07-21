@@ -1,0 +1,18 @@
+---
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:media="http://search.yahoo.com/mrss/" version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"  xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>{{ page.title }}</title>
+        <description>{{ page.description }}</description>
+        <pubDate>{{ 'now' | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
+        <generator>https://github.com/codeforIATI/rss-feeds</generator>
+        <link>{{ page.link }}</link>
+        <image>
+            <link>{{ page.link }}</link>
+            <url>https://www.google.com/s2/favicons?domain={{ page.link }}</url>
+            <title>{{ page.title }}</title>
+        </image>
+        {{ content }}
+    </channel>
+</rss>

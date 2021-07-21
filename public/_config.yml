@@ -1,0 +1,5 @@
+collections:
+  iati_connect:
+    output: false
+  iati_standard:
+    output: false

@@ -1,0 +1,27 @@
+[{
+    "id": "iati_connect",
+    "url": "https://iaticonnect.org/search/all/all",
+    "item": "div.teaser.card",
+
+    "selectors": {
+        "headline": "h4.teaser__title > a > span",
+        "summary": null,
+        "illustration": "img.b-lazy",
+        "date": "div.teaser__published-date",
+        "author": "teaser__published-author",
+        "link": "h4.teaser__title > a"
+    }
+}, {
+    "id": "iati_standard",
+    "url": "https://iatistandard.org/en/news/",
+    "item": "article.listing",
+
+    "selectors": {
+        "headline": "h2.listing__heading > a > span",
+        "summary": "div.listing__excerpt",
+        "illustration": "div.listing__media > img",
+        "date": "span.listing__metadata__date",
+        "author": null,
+        "link": "a.button"
+    }
+}]
