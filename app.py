@@ -1,11 +1,14 @@
+import re
+from datetime import date
 from os.path import join
+from os import environ
 import json
 from urllib.parse import urlsplit, urlunsplit
 
 import yaml
 import requests
 from bs4 import BeautifulSoup as bs
-from dateutil.parser import parse as date_parse
+import parsedatetime
 from slugify import slugify
 
 
@@ -14,9 +17,22 @@ def get_base_url(url):
     return urlunsplit((split.scheme, split.netloc, '', '', ''))
 
 
+def authenticate(session, auth):
+    for k, v in auth["data"].items():
+        match = re.match(r'\{\{ ([^ ]+) \}\}', v)
+        if match:
+            auth["data"][k] = environ.get(match.group(1))
+    print("Authenticating: " + auth["url"])
+    session.post(auth["url"], data=auth["data"])
+    return session
+
+
 def load_feed(feed):
+    session = requests.Session()
+    if feed.get("auth"):
+        session = authenticate(session, feed["auth"])
     print("Fetching: " + feed["url"])
-    r = requests.get(feed["url"])
+    r = session.get(feed["url"])
     soup = bs(r.content, features="html.parser")
     return soup
 
@@ -42,7 +58,8 @@ def clean_item(item, base_url):
         if v is None:
             continue
         if k == "date":
-            cleaned_v = date_parse(v.text, fuzzy=True).date()
+            cal = parsedatetime.Calendar()
+            cleaned_v = date(*cal.parse(v.text)[0][:3])
         elif k == "link":
             cleaned_v = clean_url(v.get("href"), base_url)
         elif k == "illustration":

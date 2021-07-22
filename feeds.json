@@ -24,4 +24,27 @@
         "author": null,
         "link": "a.button"
     }
+}, {
+    "id": "iati_connect_comments",
+    "url": "https://iaticonnect.org/big_pipe/no-js?destination=/dashboard/welcome-iati-connect",
+    "item": ".block-dashboard-activity-stream .stream .stream-item .social-post-album--post",
+
+    "auth": {
+        "url": "https://iaticonnect.org/user/login",
+        "data": {
+            "name_or_mail": "{{ CONNECT_USERNAME }}",
+            "pass": "{{ CONNECT_PASS }}",
+            "form_id": "social_user_login_form",
+            "op": "Log in"
+        }
+    },
+
+    "selectors": {
+        "headline": ".media-heading p",
+        "summary": ".post-body--stream-body",
+        "illustration": "teaser__image img",
+        "date": ".media-heading .post-date",
+        "author": ".media-heading a",
+        "link": ".media-heading .post-date a"
+    }
 }]

@@ -27,6 +27,8 @@ jobs:
           python app.py
         env:
           GITHUB_PAGES: TRUE
+          CONNECT_USERNAME: ${{ secrets.CONNECT_USERNAME }}
+          CONNECT_PASS: ${{ secrets.CONNECT_PASS }}
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:

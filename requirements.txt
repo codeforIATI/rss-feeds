@@ -1,5 +1,5 @@
 pyyaml
 requests
 BeautifulSoup4
-python-dateutil
+parsedatetime
 python-slugify
