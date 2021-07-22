@@ -78,14 +78,14 @@ def clean_item(item, base_url):
     return cleaned_item
 
 
-def write_item(item, id_):
+def write_item(item, feed_id):
     item_date = item.get("date", date.today())
     fname = slugify(
         "{}-{}".format(
             item_date,
             item["headline"]),
         max_length=100) + ".md"
-    fpath = join("public", "_" + id_, fname)
+    fpath = join("public", "_" + feed_id, fname)
     with open(fpath, 'w') as f:
         f.write("---\n{}---\n".format(
             yaml.dump(item)))
