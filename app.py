@@ -85,10 +85,10 @@ def clean_item(item, base_url):
 def write_item(item, feed_id):
     item_date = item.get("date", datetime.now()).date()
     fname = slugify(
-        "{:02}-{}-{}".format(
-            item["order"],
-            item_date,
-            item["headline"]),
+        "{order:02} {date} {headline}".format(
+            order=item["order"],
+            date=item_date,
+            headline=item["headline"]),
         max_length=100) + ".md"
     fpath = join("public", "_" + feed_id, fname)
     with open(fpath, 'w') as f:
