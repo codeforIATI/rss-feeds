@@ -1,7 +1,12 @@
 collections:
   iati_connect:
+    sort_by: order
     output: false
+
   iati_connect_comments:
+    sort_by: order
     output: false
+
   iati_standard:
+    sort_by: order
     output: false

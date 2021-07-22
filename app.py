@@ -38,8 +38,10 @@ def load_feed(feed):
 
 
 def parse_feed(soup, feed):
-    for item in soup.select(feed["item"]):
-        feed_item = {}
+    for idx, item in enumerate(soup.select(feed["item"])):
+        feed_item = {
+            "order": idx,
+        }
         for feed_element, element_selector in feed["selectors"].items():
             if element_selector:
                 feed_item[feed_element] = item.select_one(element_selector)
@@ -57,7 +59,9 @@ def clean_item(item, base_url):
     for k, v in item.items():
         if v is None:
             continue
-        if k == "date":
+        elif k == "order":
+            cleaned_v = v
+        elif k == "date":
             cal = parsedatetime.Calendar()
             cleaned_v = date(*cal.parse(v.text)[0][:3])
         elif k == "link":
