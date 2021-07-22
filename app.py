@@ -78,11 +78,12 @@ def clean_item(item, base_url):
     return cleaned_item
 
 
-def write_item(item, idx, feed_id):
+def write_item(item, feed_id):
+    item_date = item.get("date", date.today())
     fname = slugify(
-        "{idx:02}-{headline}".format(
-            idx=idx,
-            headline=item["headline"]),
+        "{}-{}".format(
+            item_date,
+            item["headline"]),
         max_length=100) + ".md"
     fpath = join("public", "_" + feed_id, fname)
     with open(fpath, 'w') as f:
@@ -97,6 +98,6 @@ if __name__ == "__main__":
     for feed in feeds:
         base_url = get_base_url(feed["url"])
         soup = load_feed(feed)
-        for idx, item in enumerate(parse_feed(soup, feed)):
+        for item in parse_feed(soup, feed):
             item = clean_item(item, base_url)
-            write_item(item, idx, feed["id"])
+            write_item(item, feed["id"])
