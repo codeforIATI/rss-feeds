@@ -3,6 +3,16 @@
     "url": "https://iaticonnect.org/search/all/all",
     "item": "div.teaser.card",
 
+    "auth": {
+        "url": "https://iaticonnect.org/user/login",
+        "data": {
+            "name_or_mail": "{{ CONNECT_USERNAME }}",
+            "pass": "{{ CONNECT_PASS }}",
+            "form_id": "social_user_login_form",
+            "op": "Log in"
+        }
+    },
+
     "selectors": {
         "headline": "h4.teaser__title > a > span",
         "summary": null,

@@ -79,9 +79,10 @@ def clean_item(item, base_url):
 
 
 def write_item(item, id_):
+    item_date = item.get("date", date.today())
     fname = slugify(
         "{}-{}".format(
-            item["date"],
+            item_date,
             item["headline"]),
         max_length=100) + ".md"
     fpath = join("public", "_" + id_, fname)
