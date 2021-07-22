@@ -85,7 +85,7 @@ def clean_item(item, base_url):
 def write_item(item, feed_id):
     item_date = item.get("date", datetime.now()).date()
     fname = slugify(
-        "{}-{}-{}".format(
+        "{:02}-{}-{}".format(
             item["order"],
             item_date,
             item["headline"]),
