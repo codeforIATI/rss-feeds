@@ -1,5 +1,5 @@
 import re
-from datetime import date
+from datetime import datetime
 from os.path import join
 from os import environ
 import json
@@ -63,7 +63,7 @@ def clean_item(item, base_url):
             cleaned_v = v
         elif k == "date":
             cal = parsedatetime.Calendar()
-            cleaned_v = date(*cal.parse(v.text)[0][:3])
+            cleaned_v = datetime(*cal.parse(v.text)[0][:6])
         elif k == "link":
             cleaned_v = clean_url(v.get("href"), base_url)
         elif k == "illustration":
@@ -83,9 +83,10 @@ def clean_item(item, base_url):
 
 
 def write_item(item, feed_id):
-    item_date = item.get("date", date.today())
+    item_date = item.get("date", datetime.now()).date()
     fname = slugify(
-        "{}-{}".format(
+        "{}-{}-{}".format(
+            item["order"],
             item_date,
             item["headline"]),
         max_length=100) + ".md"
