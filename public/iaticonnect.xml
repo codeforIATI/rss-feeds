@@ -5,6 +5,6 @@ description: Latest posts on IATI Connect
 link: https://iaticonnect.org/search/all/all
 ---
 
-{% for article in site.iati_connect reversed %}
+{% for article in site.iati_connect %}
     {% include article.xml article=article %}
 {% endfor %}

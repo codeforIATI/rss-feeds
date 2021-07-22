@@ -5,6 +5,6 @@ description: Latest comments on IATI Connect
 link: https://iaticonnect.org
 ---
 
-{% for article in site.iati_connect_comments reversed %}
+{% for article in site.iati_connect_comments %}
     {% include article.xml article=article %}
 {% endfor %}

@@ -5,6 +5,6 @@ description: Latest news on iatistandard.org
 link: https://iatistandard.org/en/news/
 ---
 
-{% for article in site.iati_standard reversed %}
+{% for article in site.iati_standard %}
     {% include article.xml article=article %}
 {% endfor %}
