@@ -1,3 +1,3 @@
 # IATI RSS Feeds
 
-RSS feeds for iatistandard.org and iaticonnect.org.
+The missing RSS feeds for various IATI websites.
