@@ -1,4 +1,6 @@
 title: IATI RSS Feeds
+description: The missing RSS feeds for various IATI websites.
+
 collections:
   iati_connect:
     sort_by: order
