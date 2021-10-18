@@ -1,0 +1,38 @@
+---
+---
+.jumbotron {
+  background-color: #fff;
+
+  .container {
+    max-width: 40rem;
+  }
+}
+
+.footer {
+  background-color: #f5f5f5;
+
+  > .container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+
+$rss_color: #ee802f;
+
+.text-rss {
+  color: $rss_color;
+
+  &:hover {
+    color: darken($rss_color, 15%);
+  }
+}
+
+.btn-rss {
+  background-color: $rss_color;
+  border-color: $rss_color;
+
+  &:hover {
+    background-color: darken($rss_color, 7.5%);
+    border-color: darken($rss_color, 10%);
+  }
+}
