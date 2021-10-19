@@ -30,8 +30,11 @@ jobs:
           CONNECT_USERNAME: ${{ secrets.CONNECT_USERNAME }}
           CONNECT_PASS: ${{ secrets.CONNECT_PASS }}
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          enable_jekyll: true
-          force_orphan: true
+          branch: gh-pages
+          folder: public
+          single-commit: true
+          token: ${{ secrets.GH_TOKEN }}
+          git-config-name: Code for IATI bot
+          git-config-email: 57559326+codeforIATIbot@users.noreply.github.com
