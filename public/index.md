@@ -11,4 +11,6 @@ The missing RSS feeds for various IATI websites.
 
 {% include button.html fname="iaticonnect-comments.xml" title="IATI Connect comments RSS feed" %}
 
-_Last updated: <span id="last-updated">{{ site.time | date_to_rfc822 }}</span>._
+{% assign now = site.time | date_to_rfc822 %}
+
+_Last updated: <abbr title="{{ now }}" id="last-updated">{{ now }}</abbr>._
