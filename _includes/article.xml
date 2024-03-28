@@ -1,0 +1,21 @@
+<item>
+    {%- if article.headline -%}
+    <title>{{ article.headline | xml_escape }}</title>
+    {%- endif -%}
+    {%- if article.link -%}
+    <link>{{ article.link  | xml_escape }}</link>
+    {%- endif -%}
+    <description><![CDATA[{% if article.illustration %}<img src="{{ article.illustration.link }}" width="{{ article.illustration.width }}" height="{{ article.illustration.height }}"><br><br>{% endif %}{% if article.summary %}{{ article.summary }}{% endif %}]]></description>
+    {%- if article.author -%}
+    <dc:creator>{{ article.author | xml_escape }}</dc:creator>
+    {%- endif -%}
+    {%- if article.date -%}
+    <pubDate>{{ article.date | date_to_xmlschema }}</pubDate>
+    {%- endif -%}
+    {%- if article.illustration -%}
+    <media:content url="{{ article.illustration.link | xml_escape }}" medium="image" width="{{ article.illustration.width | xml_escape }}" height="{{ article.illustration.height | xml_escape }}" />
+    {%- endif -%}
+    {%- if article.link -%}
+    <guid>{{ article.link | xml_escape }}</guid>
+    {%- endif -%}
+</item>
